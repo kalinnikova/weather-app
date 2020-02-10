@@ -1,0 +1,238 @@
+// mixins
+$mobile-max-width: 799px;
+
+$small-max-width: 1023px;
+$medium-max-width: 1279px;
+
+@mixin mobile() {
+  @media screen and (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin small() {
+  @media screen and (max-width: $small-max-width) {
+    @content;
+  }
+}
+
+@mixin medium() {
+  @media screen and (max-width: $medium-max-width) {
+    @content;
+  }
+}
+
+@mixin large() {
+  @media screen and (min-width: ($medium-max-width + 1)) {
+    @content;
+  }
+}
+
+// palette
+$color-dark-black: #000000;
+$color-dark-2: #35393B;
+$color-dark-3: #747272;
+$color-dark-4: #7B7E84;
+$color-blue-primary: #1276CA;
+$color-light-4: #F2F4F4;
+$color-light-3: #C7D3E0;
+$color-light-2: #E3E3E3;
+$color-light: #EFEFEF;
+$color-white: #FFFFFF;
+$color-blue-secondary: #00A4E0;
+$color-blue-3: #F4FAFF;
+$color-blue-4: #398BD0;
+$color-red: #FF0101;
+$color-yellow: #F9C154;
+$color-brown: #C3A587;
+$color-brown-light: #D5CBC3;
+$color-grey: #E8EBEC;
+$color-dark: #727E8C;
+$color-dark-light: #A1A1A1;
+$color-green: #006B58;
+$color-green-hover: #008675;
+$color-hover: #606060;
+$color-new-hover: #C0AC99;
+$color-pressed: #B09173;
+$color-brown-2: #B09173;
+$color-light-5: #F8F8F8;
+$color-background: #429EA6;
+$color-background-row-active: #F2F2F2;
+
+// Цвета основных элементов
+$color-block-border: $color-light-2; // дефолтный цвет рамок блоков
+$color-highlight: $color-blue-3;    // цвет фона наведенного элемента списка
+
+$status-color-blue: #007ACE;
+$status-color-red: #DA2A07;
+$status-color-green: #50B83C;
+$status-color-yellow: $color-yellow;
+$status-color-grey: $color-light-2;
+$status-color-signed: #FBEB8C;
+
+// typography
+$font-family-exo-2: 'Exo 2', sans-serif;
+$font-family-open-sans: 'Open Sans', sans-serif;
+$font-family-ibm_plex_sans: 'IBM Plex Sans', sans-serif;
+$font-h1: 700 48px/52px 'Exo 2', sans-serif;
+$font-h2: 700 38px/52px 'Exo 2', sans-serif;
+$font-h3: 700 24px/26px 'Exo 2', sans-serif;
+$font-h4: 500 21px/28px 'Exo 2', sans-serif;
+$font-basic-text: 400 16px/26px 'Open Sans', sans-serif;
+$font-small-text: 400 14px/24px 'Open Sans', sans-serif;
+$font-navigation-text: 400 13px/24px 'Open Sans', sans-serif;
+$font-small-text-semi-bold: 600 14px/24px 'Open Sans', sans-serif;
+$font-hint-text: 400 12px/18px 'Open Sans', sans-serif;
+$font-active-button-text: 600 13px/24px 'Open Sans', sans-serif;
+
+$spinner-size: 75px;
+
+%h1 {
+  font-family: $font-family-exo-2;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 52px;
+
+  @include mobile() {
+    font-size: 27px;
+    line-height: 32px;
+  }
+}
+
+%h2 {
+  font-family: $font-family-exo-2;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+
+  @include mobile() {
+    font-size: 22px;
+    line-height: 36px;
+  }
+}
+
+%h3 {
+  font-family: $font-family-exo-2;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 38px;
+
+  @include mobile() {
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+%h4 {
+  font-family: $font-family-exo-2;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 28px;
+
+  @include mobile() {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+%basic-text {
+  font-family: $font-family-open-sans;
+  font-size: 16px;
+  line-height: 24px;
+
+  @include mobile() {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}
+
+%basic-text-bold {
+  font-family: $font-family-open-sans;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+
+  @include mobile() {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}
+
+%hint-text {
+  font-family: $font-family-open-sans;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+%small-text {
+  font-family: $font-family-open-sans;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+%small-text-semi-bold {
+  @extend %small-text;
+  font-weight: 600;
+}
+
+%link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+  color: $color-green;
+
+  &:visited {
+    text-decoration: none;
+    color: $color-green;
+  }
+
+  &:hover,
+  &:active {
+    color: $color-green;
+    text-decoration: underline;
+  }
+}
+
+%opacing-link {
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.5;
+  }
+}
+
+%centered {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @include mobile() {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@mixin font-weight($class) {
+  @for $i from 0 through 8 {
+    $value: $i * 100 + 100;
+    .#{$class}#{$value} {
+      font-weight: $value;
+    }
+  }
+}
+
+/* Малый отступ: 16px для десктопа, 12 для мобилы. */
+@mixin small-gap($property) {
+  #{$property}: 16px;
+
+  @include mobile() {
+    #{$property}: 12px;
+  }
+}
